@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 255 255 255;
+  --foreground: 0 0 0;
+  --card: 255 255 255;
+  --card-foreground: 0 0 0;
+  --primary: 37 99 235;
+  --primary-foreground: 255 255 255;
+}
+
+:root[class~="dark"] {
+  --background: 17 24 39;
+  --foreground: 255 255 255;
+  --card: 31 41 55;
+  --card-foreground: 255 255 255;
+  --primary: 59 130 246;
+  --primary-foreground: 255 255 255;
+}
+
+:root[class~="sombre"] {
+  --background: 30 30 30;
+  --foreground: 200 200 200;
+  --card: 40 40 40;
+  --card-foreground: 200 200 200;
+  --primary: 100 116 139;
+  --primary-foreground: 255 255 255;
+}
+
+body {
+  background-color: rgb(var(--background));
+  color: rgb(var(--foreground));
+}
+
+.dark input,
+.dark textarea,
+.dark select {
+  color-scheme: dark;
+}
+
+.sombre input,
+.sombre textarea,
+.sombre select {
+  color-scheme: dark;
+}
+
+@layer components {
+  .card {
+    @apply bg-[rgb(var(--card))] text-[rgb(var(--card-foreground))] rounded-lg shadow-lg border border-gray-200 dark:border-gray-700;
+  }
+
+  .btn-primary {
+    @apply bg-[rgb(var(--primary))] text-[rgb(var(--primary-foreground))] rounded-md px-4 py-2 
+    hover:opacity-90 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[rgb(var(--primary))] focus:ring-offset-2
+    dark:focus:ring-offset-gray-800;
+  }
+
+  .input {
+    @apply block w-full rounded-md border-gray-300 shadow-sm 
+    focus:border-[rgb(var(--primary))] focus:ring-[rgb(var(--primary))]
+    dark:bg-gray-700 dark:border-gray-600 dark:text-white
+    transition-colors duration-200;
+  }
+}
